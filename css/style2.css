@@ -1,0 +1,474 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --color-primary: #2e0646; /* Deep Purple (Buttons) */
+    --primary-gradient: linear-gradient(90deg, #2e0646,#6a1289);
+    --color-secondary: #eaddf3; /* Light Lilac (Main Background) */
+    --color-accent: #a38eb5; /* Muted Purple (Speech bubbles/Accents) */
+    --color-text-dark: #2a0a38;
+    --color-text-light: #ffffff;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Orbitron', 'Arial Black', sans-serif; /* Futuristic look */
+    --max-width: 1200px;
+}
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/fonts/icomoon.eot?dkym4s');
+  src:  url('../assets/fonts/icomoon.eot?dkym4s#iefix') format('embedded-opentype'),
+    url('../assets/fonts/icomoon.ttf?dkym4s') format('truetype'),
+    url('../assets/fonts/icomoon.woff?dkym4s') format('woff'),
+    url('../assets/fonts/icomoon.svg?dkym4s#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon-robot:before {
+  content: "\e900";
+}
+.icon-icon-robot {
+    color: var(--color-text-light);
+    font-size: 2rem;
+}
+/* --- BURGER MENU STYLES --- */
+
+/* Initially hide the burger icon on desktop */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Above the nav menu */
+    padding: 0;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-text-light);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+/* --- MOBILE/TABLET NAVIGATION --- */
+@media (max-width: 768px) {
+    /* Show the burger icon */
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Style the nav-links to be a full-screen or dropdown menu */
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Hidden off-screen to the right */
+        top: 0;
+        height: 100vh;
+        width: 100%; /* Or 70% if you want to see content behind */
+        background-color: var(--color-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+        gap: 2rem;
+        font-size: 1.5rem; /* Larger text for touch */
+    }
+
+    /* Class added by JS to show the menu */
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Animation for the burger icon turning into an X */
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 80px; 
+}
+
+img {
+    max-width: 65%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.text-center { text-align: center; }
+
+/* --- HEADER & FOOTER --- */
+header {
+    background: var(--primary-gradient);
+    color: var(--color-text-light);
+    padding: 1rem 2rem;
+    /* NEW: This makes it stick to the top */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000; /* Ensures it stays on top of everything else */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Optional: Adds a shadow so it pops out */
+}
+header, footer {
+    background: var(--primary-gradient);
+    color: var(--color-text-light);
+    padding: 1rem 2rem;
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.logo-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.7rem;
+}
+
+
+
+/* --- SECTIONS COMMON --- */
+section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid transparent; 
+}
+
+/* --- PAGE 1: HERO SECTION --- */
+.hero {
+    background: var(--primary-gradient);
+    color: var(--color-text-light);
+    text-align: center;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 10px 40px;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
+.robot-placeholder-lg {
+    width: 150px;
+    height: 250px;
+    margin: 20px auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+/* --- PAGE 1: ABOUT ME --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.about-text-box {
+    background: transparent;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    max-width: 600px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.quote-mark {
+    font-size: 4rem;
+    color: #ccc;
+    position: absolute;
+    line-height: 1;
+}
+.quote-top { top: -20px; left: 10px; }
+.quote-bottom { bottom: -40px; right: 10px; }
+
+.resume-btn, .return {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+}
+.return {
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+
+}
+
+/* --- PAGE 1: PROJECTS GRID --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.project-card {
+    background-color: var(--color-primary); /* Dark box */
+    color: white;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: #6a1b8c;
+}
+
+/* --- PAGE 1: CONTACTS --- */
+.contacts-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 2rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-row {
+    margin-bottom: 1rem;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+/* --- PAGE 2: PROJECT DETAIL --- */
+.project-header {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    gap: 2rem;
+}
+
+.detail-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.speech-bubble {
+    background-color: #a68cb0; /* Specific muted purple */
+    padding: 2rem;
+    border-radius: 50%;
+    width: 250px;
+    height: 150px; /* Oval shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.small-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.disclaimer-box {
+    border: 2px solid #ccc;
+    padding: 2rem;
+    min-height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* --- PAGE 3: WIP (Work In Progress) --- */
+.wip-body {
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.wip-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: var(--max-width);
+    padding: 2rem;
+}
+
+.wip-text {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* --- IMAGE PLACEHOLDERS --- */
+.img-placeholder-robot {
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.laptop-robot, .phone-robot{
+    max-width: 100%;
+}
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .section-title { font-size: 2rem; }
+    .hero-title { font-size: 2rem; }
+    
+    .about-container, 
+    .contacts-wrapper, 
+    .detail-row, 
+    .detail-row.reverse, 
+    .wip-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        align-self: center;
+        margin-right: 0;
+    }
+
+    .contact-info { width: 100%; }
+    
+    .wip-text { font-size: 2.5rem; }
+}
+.sitting {
+    max-width: 100%;
+}
