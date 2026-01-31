@@ -392,8 +392,11 @@ section {
     text-align: center;
     font-size: 0.8rem;
 }
-.laptop-robot, .phone-robot{
+.laptop-robot {
     max-width: 100%;
+}
+.phone-robot {
+    max-width:45%;
 }
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 768px) {
@@ -528,3 +531,4 @@ section {
         grid-template-columns: 1fr; 
     }
 }
+
