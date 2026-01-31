@@ -354,59 +354,8 @@ section {
     font-size: 1.1rem;
 }
 
-/* --- PAGE 2: PROJECT DETAIL --- */
-.project-header {
-    background-color: var(--color-primary);
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-}
 
-.detail-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 4rem;
-    gap: 2rem;
-}
 
-.detail-row.reverse {
-    flex-direction: row-reverse;
-}
-
-.speech-bubble {
-    background-color: #a68cb0; /* Specific muted purple */
-    padding: 2rem;
-    border-radius: 50%;
-    width: 250px;
-    height: 150px; /* Oval shape */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-group {
-    display: flex;
-    gap: 10px;
-}
-
-.small-btn {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 8px 16px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-}
-
-.disclaimer-box {
-    border: 2px solid #ccc;
-    padding: 2rem;
-    min-height: 150px;
-    width: 100%;
-    border-radius: 10px;
-    position: relative;
-}
 
 /* --- PAGE 3: WIP (Work In Progress) --- */
 .wip-body {
@@ -435,7 +384,7 @@ section {
 
 /* --- IMAGE PLACEHOLDERS --- */
 .img-placeholder-robot {
-    width: 150px;
+    width: 50%;
     height: 200px;
     display: flex;
     align-items: center;
@@ -471,4 +420,111 @@ section {
 }
 .sitting {
     max-width: 100%;
+}
+
+
+/* --- UPDATED PROJECT PAGE STYLES (NO ROBOTS) --- */
+
+/* Center the specific containers that used to have robots */
+.goal-container, 
+.disclaimer-container {
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto;   /* Center horizontally */
+    text-align: center;
+}
+.project-header {
+    background: var(--primary-gradient); /* Uses your purple gradient */
+    color: white;
+    text-align: center; /* This forces the text to the center */
+    padding: 1.5rem;
+    width: 100%;
+}
+
+/* Make the disclaimer box centered */
+.disclaimer-box {
+    border: 2px solid #ccc;
+    padding: 3rem;
+    position: relative;
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5); /* Slight white tint */
+}
+
+/* Ensure the quote marks look good in the centered box */
+.quote-top { top: 10px; left: 20px; }
+.quote-bottom { bottom: -10px; right: 20px; }
+
+/* Adjust the Tech Stack tags to be centered */
+.tech-stack-tags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+/* --- CHARTS GRID STYLES --- */
+
+.charts-grid {
+    display: grid;
+    /* This creates 2 equal columns on desktop */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; /* Space between charts */
+    margin: 3rem auto;
+    max-width: 1000px; /* Limits width so charts don't stretch too wide */
+    padding: 0 1rem;
+}
+
+.chart-item {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Soft shadow */
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Slight zoom on hover for interactivity */
+.chart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.chart-placeholder {
+    width: 100%;
+    /* Fixed height ensures all grid items are the same size */
+    height: 250px; 
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 0.9rem;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Prevents large images from breaking the layout */
+}
+
+/* The Caption below the chart */
+.chart-caption {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* --- RESPONSIVE BEHAVIOR --- */
+
+/* On Tablets and Mobile (screens smaller than 768px) */
+@media (max-width: 768px) {
+    .charts-grid {
+        /* Force 1 column on small screens */
+        grid-template-columns: 1fr; 
+    }
 }
