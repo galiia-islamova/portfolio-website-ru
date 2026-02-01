@@ -532,3 +532,80 @@ section {
     }
 }
 
+/* --- NEW HERO ANIMATION (The "Beautiful" Part) --- */
+.hero-visual-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem auto; /* Centers it and adds space below */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Core (Glowing Dot) */
+.data-core {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* The Rings */
+.data-ring {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Specific Ring Rotations */
+.ring-1 { animation: spin-right 6s linear infinite; }
+.ring-2 { width: 160px; height: 160px; animation: spin-left 8s linear infinite; border-color: rgba(234, 221, 243, 0.5); }
+.ring-3 { width: 120px; height: 120px; animation: spin-right 4s linear infinite; border-top-color: transparent; border-bottom-color: transparent; }
+
+/* Animations */
+@keyframes spin-right {
+    0% { transform: rotate(0deg) rotateX(45deg); }
+    100% { transform: rotate(360deg) rotateX(45deg); }
+}
+
+@keyframes spin-left {
+    0% { transform: rotate(0deg) rotateX(-45deg); }
+    100% { transform: rotate(-360deg) rotateX(-45deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* --- CENTERED LAYOUT (Removing Robots) --- */
+
+/* Center the About Text Box and make it wider */
+.about-centered {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Adjust the Quote marks for the wider box */
+.about-text-box {
+    width: 100%;
+    max-width: 100%; /* Allows it to fill the centered container */
+    padding: 3rem;   /* More breathing room */
+}
+
+/* Center the Contact Box */
+.contact-centered {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 15px; /* Rounded corners look better when standalone */
+}
