@@ -1,3 +1,4 @@
+
 /* --- RESET & VARIABLES --- */
 :root {
     --color-primary: #2e0646; /* Deep Purple (Buttons) */
@@ -127,7 +128,7 @@ body {
 }
 
 img {
-    max-width: 65%;
+   
     height: auto;
     display: block;
 }
@@ -471,15 +472,46 @@ section {
 }
 /* --- CHARTS GRID STYLES --- */
 
+
+
 .charts-grid {
     display: grid;
-    /* This creates 2 equal columns on desktop */
+    /* Still 2 columns on desktop */
     grid-template-columns: 1fr 1fr; 
-    gap: 30px; /* Space between charts */
+    gap: 40px; /* Increased gap for better spacing */
     margin: 3rem auto;
-    max-width: 1000px; /* Limits width so charts don't stretch too wide */
+    
+    /* CHANGE 1: Increased max-width from 1000px to 1200px (Wider container) */
+    max-width: 1200px; 
     padding: 0 1rem;
 }
+
+.chart-placeholder {
+    width: 100%;
+    height: 350px; 
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 0.9rem;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .charts-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+   
+    .chart-placeholder {
+        height: 400px; 
+    }
+}
+
 
 .chart-item {
     background: #fff;
@@ -497,21 +529,7 @@ section {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.chart-placeholder {
-    width: 100%;
-    /* Fixed height ensures all grid items are the same size */
-    height: 250px; 
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 0.9rem;
-    border: 1px dashed #ccc;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    overflow: hidden; /* Prevents large images from breaking the layout */
-}
+
 
 /* The Caption below the chart */
 .chart-caption {
@@ -532,18 +550,17 @@ section {
     }
 }
 
-/* --- NEW HERO ANIMATION (The "Beautiful" Part) --- */
 .hero-visual-container {
     position: relative;
     width: 200px;
     height: 200px;
-    margin: 0 auto 2rem auto; /* Centers it and adds space below */
+    margin: 0 auto 2rem auto; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* The Core (Glowing Dot) */
+
 .data-core {
     width: 20px;
     height: 20px;
@@ -554,7 +571,7 @@ section {
     animation: pulse 2s infinite ease-in-out;
 }
 
-/* The Rings */
+
 .data-ring {
     position: absolute;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -588,24 +605,52 @@ section {
 
 /* --- CENTERED LAYOUT (Removing Robots) --- */
 
-/* Center the About Text Box and make it wider */
+
 .about-centered {
     margin: 0 auto;
     max-width: 800px;
     width: 100%;
 }
 
-/* Adjust the Quote marks for the wider box */
 .about-text-box {
     width: 100%;
     max-width: 100%; /* Allows it to fill the centered container */
     padding: 3rem;   /* More breathing room */
 }
 
-/* Center the Contact Box */
+
 .contact-centered {
     margin: 0 auto;
     max-width: 600px;
     width: 100%;
     border-radius: 15px; /* Rounded corners look better when standalone */
+}
+/* --- WIDE VISUALIZATION IMAGE STYLE --- */
+.wide-viz-container {
+    max-width: 2000px; /* Limits how wide it gets on huge screens */
+    margin: 3rem auto; /* Centers the block vertically and horizontally */
+    padding: 0 1rem;
+}
+
+.wide-image-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 21 / 9; 
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* On mobile, allow it to be a bit taller so details are visible */
+@media (max-width: 600px) {
+    .wide-image-placeholder {
+        aspect-ratio: 16 / 9;
+    }
 }
