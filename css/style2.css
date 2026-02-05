@@ -60,6 +60,14 @@
     z-index: 1001; /* Above the nav menu */
     padding: 0;
 }
+p {
+    text-transform: lowercase;
+}
+
+p::first-letter {
+    text-transform: uppercase;
+}
+
 
 .burger-menu span {
     width: 30px;
